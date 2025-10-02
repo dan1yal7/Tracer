@@ -14,9 +14,9 @@ namespace WolfAnalyzer.Tracer
         public int TraceWebActivity()
         {
             // Get some data and put it in a file
-            CollectData("Microsoft-Windows-SChannel", "Schannel.etl");
+            CollectData("Microsoft-Windows-DNS-Client", "Analytical.etl");
 
-            ProcessData("Schannel.etl");
+            ProcessData("Analytical.etl");
             return 0;
         }
 
@@ -41,7 +41,7 @@ namespace WolfAnalyzer.Tracer
             {
                 Console.CancelKeyPress += delegate (object? s, ConsoleCancelEventArgs e) { session.Dispose(); };
                
-                var restarted = session.EnableProvider("Microsoft-Windows-SChannel");
+                var restarted = session.EnableProvider("Microsoft-Windows-DNS-Client");
                 if (restarted)
                 {
                     Console.WriteLine($"The session was restarted, some events might have been lost {sessionName}");
